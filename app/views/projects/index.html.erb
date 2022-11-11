@@ -1,14 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Projects</h1>
+<header class="pb-3 mb-4 border-bottom">
+  <div class="d-flex align-items-center text-dark text-decoration-none">
+    <span class="fs-4">Projects</span>
+    <div class="ms-auto">
+      <%= link_to "New project", new_project_path, class:"btn btn-primary" %>
+    </div>
+  </div>
+</header>
 
 <div id="projects">
   <% @projects.each do |project| %>
     <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
   <% end %>
 </div>
 
-<%= link_to "New project", new_project_path %>

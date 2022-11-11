@@ -1,9 +1,13 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user! , except: :index
   def index
-    @user_task = Task.all.where(assignee_id:current_user.id)
   end
 
-  def show_all_task
+  def all_task
     @tasks = Task.all
+  end
+
+  def show_your_task
+    @user_task = current_user.assigned_tasks
   end
 end

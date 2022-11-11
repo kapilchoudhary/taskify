@@ -1,22 +1,17 @@
 <div id="<%= dom_id task %>">
-  <p>
-    <strong>Title:</strong>
-    <%= task.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= task.content %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= task.assignee&.email %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= task.status%>
-  </p>
-
+  <div class="col">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title"><%= task.title %></h5>
+        <p class="card-text"><%= truncate(strip_tags(task.content.to_s), length: 60) %></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <%= link_to "View Task", project_task_path(project_id: task.project.id, id: task.id) , class:"btn btn-sm btn-outline-secondary"%>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+          </div>
+          <small class="text-muted">9 mins</small>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

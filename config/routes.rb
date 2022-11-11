@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks
   end
-  get '/all_tasks', to: 'home#show_all_task'
+  get '/your_tasks', to: 'home#show_your_task'
+  get '/all_task', to: 'home#all_task'
+
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

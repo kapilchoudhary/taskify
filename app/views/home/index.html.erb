@@ -1,18 +1,28 @@
-<%= link_to "All tasks", all_tasks_path%>
+  <div class="container py-4">
 
-<% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% else %>
-  <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
-<% end %>
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Taskify</h1>
+        <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+        <%= link_to "Create project", new_project_path, class:"btn btn-primary btn-lg" %>
+      </div>
+    </div>
 
-<% if @user_task.present?%>
-  <% @user_task.each do |task| %>
-    <%= render :partial => 'tasks/task', :locals => {:task => task} %>
-    <p>
-      <%= link_to "Show this task", project_task_path(project_id: task.project.id, id: task.id) %>
-    </p>
-  <% end %>
-<% else %>
-  <h3>Sorry no task available for you</h3>
-<% end %>
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-bg-dark rounded-3">
+          <h2>Check Your Task</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <%= link_to "Your Tasks", your_tasks_path , class:"btn btn-outline-light" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>Check All Available Task</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <%= link_to "Task", all_task_path , class:"btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+
+  </div>

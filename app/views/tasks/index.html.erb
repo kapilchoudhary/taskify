@@ -3,10 +3,9 @@
 <h1>Tasks</h1>
 
 <div id="tasks">
-  <% @tasks.each do |task| %>
-    <%= render task %>
-    <p>
-      <%= link_to "Show this task", project_task_path(project_id: @project.id, id: task.id) %>
-    </p>
-  <% end %>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <% @tasks.each do |task| %>
+      <%= render task %>
+    <% end %>
+  </div>
 </div>

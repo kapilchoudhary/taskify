@@ -1,17 +1,12 @@
 <div id="<%= dom_id project %>">
-  <p>
-    <strong>Title:</strong>
-    <%= project.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= project.description %>
-  </p>
-
-  <p>
-    <strong>Start date:</strong>
-    <%= project.start_date %>
-  </p>
-
+  <div class="card my-4">
+    <h5 class="card-header"><%= project.title %></h5>
+    <div class="card-body">
+      <h5 class="card-title">STATUS: <small class="text-muted"><%= project.status %></small></h5>
+      <p class="card-text"><%= project.description %></p>
+      <p class="card-text"><small class="text-muted"><%= project.start_date %></small></p>
+      <%= link_to "Show this project", project, class:"btn btn-primary" %>
+    </div>
+  </div>
 </div>
+

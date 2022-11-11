@@ -1,0 +1,11 @@
+<% if @tasks.present?%>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
+    <% @tasks.each do |task| %>
+      <%= render :partial => 'tasks/task', :locals => {:task => task} %>
+    <% end %>
+  </div>
+
+<% else %>
+  <h3 class="text-danger text-center">Sorry! No Task Yet.</h3>
+<% end %>
+
