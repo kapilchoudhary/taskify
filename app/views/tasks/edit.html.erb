@@ -1,0 +1,9 @@
+<h1>Editing task</h1>
+
+<%= render "form", task: @task %>
+
+<br>
+
+<div>
+  <%= link_to "Show this task", project_task_path(project_id: @project.id, id: @task.id) %>
+</div>

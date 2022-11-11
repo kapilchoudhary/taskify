@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :projects
   devise_for :users
+  resources :projects do
+    resources :tasks
+  end
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

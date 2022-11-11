@@ -3,6 +3,10 @@
 <%= render @project %>
 
 <div>
+  <%= link_to "Add New Task", new_project_task_path(project_id: @project.id) %>
+</div>
+
+<div>
   <%= link_to "Edit this project", edit_project_path(@project) %> |
   <%= link_to "Back to projects", projects_path %>
 
