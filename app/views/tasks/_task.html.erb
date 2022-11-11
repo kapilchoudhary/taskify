@@ -6,10 +6,13 @@
         <p class="card-text"><%= truncate(strip_tags(task.content.to_s), length: 60) %></p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <%= link_to "View Task", project_task_path(project_id: task.project.id, id: task.id) , class:"btn btn-sm btn-outline-secondary"%>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+              <%= link_to "Edit task", edit_project_task_path(project_id:@project.id, id: @task.id), class: "btn btn-sm btn-outline-secondary" %>
+              <%= link_to "Destroy task", [@task.project, @task], data: {
+                              turbo_method: :delete,
+                              turbo_confirm: "Are you sure?"
+                            }, class: "btn btn-sm btn-outline-danger" %>
+
           </div>
-          <small class="text-muted">9 mins</small>
         </div>
       </div>
     </div>
