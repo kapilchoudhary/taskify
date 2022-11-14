@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
-  validates :title, presence: true, length: { minimum: 10 }
+  validates :title, presence: true, length: { minimum: 10 }, uniqueness: true
   validates :content, presence: true, length: { minimum: 10 }
 
   has_rich_text :content
