@@ -1,10 +1,11 @@
-<h1>Editing project</h1>
-
-<%= render "form", project: @project %>
-
-<br>
-
-<div>
-  <%= link_to "Show this project", @project %> |
-  <%= link_to "Back to projects", projects_path %>
+<div class="card mt-2 shadow">
+  <div class="card-body">
+    <h4 class="card-title text-center"> Edit task</h4>
+    <%= render "form", project: @project %>
+    <br>
+    <div>
+      <%= link_to "Show this project", @project %> |
+      <%= link_to "Back to projects", projects_path %>
+    </div>
+  </div>
 </div>

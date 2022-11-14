@@ -21,13 +21,15 @@
     <%= form.rich_text_area :content %>
   </div>
 
-
-  <div class="form mt-2">
-    <%= form.label :assignee, style: "display: block", class: "fw-bold" %>
-    <%= form.select :assignee_id, User.all.map {|user| [user.email, user.id] }, {}, { class: 'form-control' } %>
-
-    <%= form.label :status, style: "display: block" %>
-    <%= form.select :status, Task.statuses.map{|status| status}, {}, { class: 'form-control' } %>
+  <div class="row g-3">
+    <div class="col">
+      <%= form.label :assignee, style: "display: block", class: "fw-bold" %>
+      <%= form.select :assignee_id, User.all.map {|user| [user.email, user.id] }, {}, { class: 'form-control' } %>
+    </div>
+    <div class="col">
+      <%= form.label :status, style: "display: block" %>
+      <%= form.select :status, Task.statuses.map{|status| status}, {}, { class: 'form-control' } %>
+    </div>
   </div>
 
   <div class="form-action mt-2">

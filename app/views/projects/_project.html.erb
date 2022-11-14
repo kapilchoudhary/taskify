@@ -1,12 +1,16 @@
 <div id="<%= dom_id project %>">
-  <div class="card my-4">
-    <h5 class="card-header"><%= project.title %></h5>
+  <div class="card my-4 shadow">
     <div class="card-body">
-      <h5 class="card-title">STATUS: <small class="text-muted"><%= project.status %></small></h5>
-      <p class="card-text"><%= project.description %></p>
+      <h5 style="float:left "><%= project.title %></h5>
+      <span class="badge bg-success ms-3"><%= project.status %></span>
+      <div class="clearfix">
+      </div>
       <p class="card-text"><small class="text-muted"><%= project.start_date %></small></p>
-      <%= link_to "Show this project", project, class:"btn btn-primary" %>
+      <p class="card-text"><%= project.description %></p>
+      <% if params[:action] != "show" %>
+        <%= link_to "Show this project", project, class:"btn btn-dark" %>
+      <% end %>
+      <%= link_to "Edit Project", edit_project_path(id: project.id), class: "btn btn btn-dark" %>
     </div>
   </div>
 </div>
-

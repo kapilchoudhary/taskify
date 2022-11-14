@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, confirmation: true
-  validates :email_confirmation, presence: true
+  validates :password, presence: true
 
   has_many :projects
   has_many :tasks

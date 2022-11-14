@@ -1,14 +1,26 @@
 <p style="color: green"><%= notice %></p>
 
+<%= link_to "Back to projects", projects_path, class: "btn btn-outline-secondary" %>
+
 <%= render @project %>
 
-<div>
-  <%= link_to "Add New Task", new_project_task_path(project_id: @project.id) %>
-</div>
 
 <div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
-
-  <%= button_to "Destroy this project", @project, method: :delete %>
+  <%= link_to "Add New Task", new_project_task_path(project_id: @project.id), class: "btn btn-success" %>
 </div>
+
+<table class="table table-responsive table-bordered mt-3
+">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+ 
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.content %></td>
+      <td><%= link_to 'Show', project_task_path(project_id: @project.id, id: task.id), class: "btn btn-outline-secondary" %></td>
+    </tr>
+  <% end %>
+</table>

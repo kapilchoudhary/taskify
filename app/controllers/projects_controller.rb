@@ -8,7 +8,9 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def show; end
+  def show
+    @tasks = @project.tasks
+  end
 
   def new
     @project = Project.new
