@@ -78,3 +78,5 @@ group :test do
 end
 
 gem 'pry-nav'
+gem 'rspec-rails'
+gem 'shoulda-matchers', '~> 5.0'
