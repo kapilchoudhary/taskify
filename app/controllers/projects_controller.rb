@@ -3,6 +3,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_project, only: %i[show edit update destroy]
+  before_action :set_status, only: %i[index search]
 
   def index
     @projects = Project.all
@@ -14,6 +15,13 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+  end
+
+  def search
+    @projects =  Project.projects_filter(params.slice(:start_date, :end_date, :status, :search))
+    respond_to do |format|
+      format.html { render :index }
+    end
   end
 
   def edit; end
@@ -63,4 +71,8 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:title, :description, :start_date)
   end
+
+  def set_status
+    @status = Project::statuses
+  end 
 end

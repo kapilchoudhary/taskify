@@ -27,8 +27,8 @@
       <%= form.select :assignee_id, User.all.map {|user| [user.email, user.id] }, {}, { class: 'form-control' } %>
     </div>
     <div class="col">
-      <%= form.label :status, style: "display: block" %>
-      <%= form.select :status, Task.statuses.map{|status| status}, {}, { class: 'form-control' } %>
+      <%= form.label :status, style: "display: block", class: "fw-bold" %>
+      <%= form.select :status, Task.statuses.except(:All).map{|status| status}, {}, { class: 'form-control' } %>
     </div>
   </div>
 
