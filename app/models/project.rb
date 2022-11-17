@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   has_rich_text :description
   belongs_to :user
   has_many :tasks
+  has_many :comments, as: :commentable, dependent: :destroy
 
   enum :status, %i[All Published Archived], default: :archived
 

@@ -1,0 +1,22 @@
+<header class="pb-3 mb-4 border-bottom">
+  <div class="d-flex align-items-center text-dark text-decoration-none">
+    <span class="fs-4">Comments</span>
+  </div>
+</header>
+
+<% commentable.comments.each do |comment| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="d-flex flex-start">
+        <div class="w-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="text-primary fw-bold mb-0">
+              <%= comment.user.email %>
+              <span class="text-dark ms-2"><%= comment.body %></span>
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

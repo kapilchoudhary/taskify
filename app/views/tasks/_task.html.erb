@@ -22,3 +22,6 @@
     </div>
   </div>
 </div>
+
+<%= render partial: "comments/comments", locals: {commentable: task}%>
+<%= render partial: "comments/form", locals: {commentable: task}%>

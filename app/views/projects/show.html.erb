@@ -15,7 +15,7 @@
     <th>Title</th>
     <th>Description</th>
   </tr>
- 
+
   <% @tasks.each do |task| %>
     <tr>
       <td><%= task.title %></td>
@@ -24,3 +24,6 @@
     </tr>
   <% end %>
 </table>
+
+<%= render partial: "comments/comments", locals: {commentable: @project}%>
+<%= render partial: "comments/form", locals: {commentable: @project}%>

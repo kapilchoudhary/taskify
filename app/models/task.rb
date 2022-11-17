@@ -5,6 +5,7 @@ class Task < ApplicationRecord
   validates :content, presence: true, length: { minimum: 10 }
 
   has_rich_text :content
+  has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :project
   belongs_to :assignee, foreign_key: :assignee_id, class_name: 'User'
   belongs_to :reporter, foreign_key: :reporters_id, class_name: 'User'
