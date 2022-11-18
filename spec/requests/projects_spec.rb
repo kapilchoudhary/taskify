@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Projects", type: :request do
   let(:user)  { create(:user) }
   let!(:project) {create(:project, user_id: user.id)}
-  let(:params) { { title:"Project title test", description:"test description", status: 1, user_id: user.id} }
+  let(:params) { { title:"Project title test", description:"test description", status: "Published", user_id: user.id} }
 
   before do
     sign_in(user)

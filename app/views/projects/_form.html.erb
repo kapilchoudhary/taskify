@@ -28,7 +28,7 @@
     </div>
     <div class="col">
       <%= form.label :status, class: "fw-bold" %>
-      <%= form.select :status, Project.statuses.except(:All).map{|status| status}, {}, { class: 'form-control' } %>
+      <%= form.select :status, Project.statuses.except(:All).keys.map{|status| status}, {}, { class: 'form-control' } %>
     </div>
   </div>
 

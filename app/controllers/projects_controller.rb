@@ -85,10 +85,10 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :start_date)
+    params.require(:project).permit(:title, :description, :start_date, :status)
   end
 
   def set_status
     @status = Project::statuses
-  end 
+  end
 end

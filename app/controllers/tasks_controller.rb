@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to project_path(@task), notice: 'Task was successfully updated.' }
+        format.html { redirect_to task_path(id: @task, project_id: @task.project_id), notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -78,6 +78,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :content, :assignee_id)
+    params.require(:task).permit(:title, :content, :assignee_id, :status)
   end
 end

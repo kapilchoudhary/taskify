@@ -4,7 +4,7 @@ RSpec.describe "Tasks", type: :request do
   let(:user)  { create(:user) }
   let!(:project) { create(:project, user_id: user.id) }
   let!(:task) { create(:task, project_id: project.id, assignee_id: user.id, reporters_id: user.id) }
-  let(:params) { { title:"Project title test", content:"test description", status: 1, project_id: project.id, assignee_id: user.id, reporters_id: user.id } }
+  let(:params) { { title:"Project title test", content:"test description", status: "QA", project_id: project.id, assignee_id: user.id, reporters_id: user.id } }
 
   before do
     sign_in(user)
