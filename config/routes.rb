@@ -4,9 +4,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :projects do
-    resources :tasks
-    resources :comments, module: :projects
     get "search", on: :collection
+    put "update_status", to: 'projects#update_status'
+
+    resources :tasks do
+      put "update_status", to: 'tasks#update_status'
+    end
+
+    resources :comments, module: :projects
   end
 
   resources :tasks do

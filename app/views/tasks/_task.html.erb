@@ -3,7 +3,9 @@
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title" style="float:left"><%= task.title %></h5>
-        <span class="badge bg-success ms-3"><%= task.status %></span>
+        <%= form_tag(project_task_update_status_path(project_id:task.project.id, task_id: task.id), method: "put") do %>
+          <%= select_tag :status,  options_for_select(Task.statuses.except(:All).map{|status| status}, Task.statuses[task.status]), onchange: 'this.form.submit();', class: 'badge bg-success ms-3' %>
+        <% end %>
         <div class="clearfix">
         </div>
         <p class="card-text"><small class="text-muted"><%= task.created_at %></small></p>  

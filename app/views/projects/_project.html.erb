@@ -2,7 +2,9 @@
   <div class="card my-4 shadow">
     <div class="card-body">
       <h5 style="float:left "><%= project.title %></h5>
-      <span class="badge bg-success ms-3"><%= project.status %></span>
+      <%= form_tag(project_update_status_path(project), method: "put") do %>
+        <%= select_tag :status,  options_for_select(Project.statuses.except(:All).map{|status| status}, Project.statuses[project.status]), onchange: 'this.form.submit();', class: 'badge bg-success ms-3' %>
+      <% end %>
       <div class="clearfix">
       </div>
       <p class="card-text"><small class="text-muted"><%= project.start_date %></small></p>

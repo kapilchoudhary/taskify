@@ -40,6 +40,16 @@ RSpec.describe "Tasks", type: :request do
     end
   end
 
+  describe 'PUT /projects/:project_id/tasks/:task_id/update_status' do
+    it 'returns http success' do
+      put "/projects/#{project.id}/tasks/#{task.id}/update_status.json", params: { status: "3" }
+      expect(response).to have_http_status(200)
+      json = JSON.parse(response.body)
+      expect(json).to have_key("title")
+      expect(json["status"]).to eq("QA")
+    end
+  end
+
   describe 'PUT /projects/:project_id/tasks/:id' do
     it "returns http success" do
       put "/projects/#{project.id}/tasks/#{task.id}.json", params: { task: params }

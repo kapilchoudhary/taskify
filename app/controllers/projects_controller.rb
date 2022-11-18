@@ -41,6 +41,22 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update_status
+    respond_to do |format|
+      if params[:status].present?
+        status = params[:status].to_i
+        @project = Project.find(params[:project_id]) if params[:project_id].present?
+        if @project.update(status: status)
+          format.html { redirect_to request.referrer, notice: "status was updated" }
+          format.json { render :show, status: :ok, location: @project }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
   def update
     respond_to do |format|
       if @project.update(project_params)

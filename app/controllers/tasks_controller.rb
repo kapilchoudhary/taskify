@@ -30,6 +30,22 @@ class TasksController < ApplicationController
     end
   end
 
+  def update_status
+    respond_to do |format|
+      if params[:status].present?
+        status = params[:status].to_i
+        @task = Task.find(params[:task_id]) if params[:task_id].present?
+        if @task.update(status: status)
+          format.html { redirect_to request.referrer, notice: "status was updated." }
+          format.json { render :show, status: :ok, location: @task }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
   def update
     respond_to do |format|
       if @task.update(task_params)

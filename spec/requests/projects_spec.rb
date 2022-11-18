@@ -39,6 +39,16 @@ RSpec.describe "Projects", type: :request do
     end
   end
 
+  describe 'PUT /projects/:project_id/update_status' do
+    it 'returns http success' do
+      put "/projects/#{project.id}/update_status.json", params: { status: "2" }
+      expect(response).to have_http_status(200)
+      json = JSON.parse(response.body)
+      expect(json).to have_key("title")
+      expect(json["status"]).to eq("Archived")
+    end
+  end
+
   describe 'PUT /projects/:id' do
     it 'return http success' do
       put "/projects/#{project.id}.json", params: { project: params }
